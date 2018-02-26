@@ -1,0 +1,67 @@
+#/bin/bash
+
+#default model name
+MODEL_NAME="dtrt2100"
+BUILD_TYPE=""
+
+if [ $# -ne 0 ];
+then
+	MODEL_NAME=$1
+	BUILD_TYPE="$2"
+else
+	echo -e "\n you can make build script by inputting like this => repo dtrt4000\n\n"
+fi
+
+echo -e "http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DBT2200\n"
+echo -e "http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DTRT2100\n"
+echo -e "http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DTRT4000\n"
+echo -e "http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DTRT1000\n"
+
+echo -e "./down.sh full_head; ./down.sh full_head; cd ../../make; make ${MODEL_NAME}_defconfig; make world\n"
+
+echo -e "svn list http://svn.humaxdigital.com/YOUVIEW/Tags/YV-H20.8.0-Release/base\n"
+echo -e "svn list http://svn.humaxdigital.com/YOUVIEW/Tags/\n"
+
+if [ $# -ne 0 ];
+then
+	echo -e "\n======================= command =======================\n"
+	found=1
+	case $MODEL_NAME in
+		"canvas")
+			echo -e "svn co http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DTRT1000"
+			echo -e "cd model_DTRT1000/down"
+		;;
+		"dtrt2100")
+			echo -e "svn co http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DTRT2100"
+			echo -e "cd model_DTRT2100/down"
+		;;
+		"dtrt4000")
+			echo -e "svn co http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DTRT4000"
+			echo -e "cd model_DTRT4000/down"
+		;;
+		"dbt2200")
+			echo -e "svn co http://svn.humaxdigital.com/YOUVIEW/Trunk/base/model_DBT2200"
+			echo -e "cd model_DBT2200/down"
+		;;
+		*)
+			found=0
+		;;
+	esac
+
+	if [ $found -eq 1 ];
+	then
+		if [ -z $BUILD_TYPE ];
+		then
+			echo -e "./down.sh full_head; ./down.sh full_head; ./down.sh full_head; cd ../../make; make ${MODEL_NAME}_defconfig; make world\n"
+		else
+            if [ -z $3 ];
+            then
+			    echo -e "./down.sh full_head; ./down.sh full_head; ./down.sh full_head; cd ../../make; make ${MODEL_NAME}_${BUILD_TYPE}_defconfig; make world\n"
+            else
+                echo -e "./down.sh full_head; ./down.sh full_head; ./down.sh full_head; ./down.sh full_head; cd ../../make; make change-target-name config=${MODEL_NAME}_${BUILD_TYPE} name=$3; make ${MODEL_NAME}_${BUILD_TYPE}_defconfig; make world"
+            fi
+		fi
+		echo -e "=======================================================\n"
+	fi
+fi
+
