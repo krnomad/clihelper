@@ -1,0 +1,36 @@
+analize core dump file
+# gdb [daemon_name] [core.file]
+( e.g gdb bronzemedia core.bronze )
+
+commands
+bt : backtrace
+br : break point
+s  : step
+n  : next
+f  : select stack
+list : show the source of selected stack
+x  : print memory
+/100 : 100 byte
+
+
+info arg
+info local 
+: show the argument and local value of the stack
+
+where : show the infomation of stack of current process
+
+
+example
+(gdb) bt 
+#0 0xef663628 in fprintf () from /usr/lib/libc.so.1 
+#1 0x15b0c in fxRslt (gubun=0x56bf0 "1", from=0x57070 "010305", 
+    to=0x574f0 "010305", loginid=0x57970 "TEST001") 
+    at /fxMain/SRC/fxWeb/cgi/rslt.c:50 
+#2 0x1597c in main (argc=1, argv=0xeffff964) 
+    at /fxMain/SRC/fxWeb/cgi/fxrslt.c:85 
+
+#0 is the newest !!!
+
+
+gdb --pid=1516 --exec=/opt/zinc/bin/bronzemediad
+(gdb) info thread

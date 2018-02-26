@@ -1,0 +1,57 @@
+##################################################################################################
+
+  command : git
+  section : N
+
+##################################################################################################
+
+#make git repository
+git init
+
+#pull file from git repository
+git full
+
+#source down from remote to working dictory
+
+#source commit to remote repo  (stage -> head -> remote)
+git add filename
+git commit -m "comment"
+git push origin master
+
+#cf - cancel add file(s)
+git rm -–cached
+
+#cancel previous all add files
+git reset
+
+#my repository
+https://github.com/jwkang/tr069_stbambition.git
+git@bitbucket.org:jwkang2/cpp_study.git
+
+#show current git remote repository
+git config --get remote.origin.url
+
+#show log
+git log
+
+#show diff
+git diff HEAD
+git diff --staged 
+
+# resettingh the stage
+git reset file_path
+
+# git status
+to see current status
+e.g) ignore untracked file in command "git status" : git -uno
+
+# ignore file or path
+.gitignore
+e.g) make untracked file ignored
+$ git ls-files --others --exclude-standard > .gitignore 
+
+# get remote repository information
+git remove -v
+
+# remove untracked content in unstaged
+git rm --cache Alloy/Alloy.System.Test

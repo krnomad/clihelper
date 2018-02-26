@@ -1,0 +1,46 @@
+##################################################################################################
+
+  command : awk
+  section : Y
+
+##################################################################################################
+
+<cmd>
+basic
+awk -F: {'print $NF'}
+
+using shell variable on awk
+usege : '"${varialblename}"'
+e.g : awk -F"[<>]" '/'"${section_name}"'/ {getline;print $1;exit}' $file_name
+</cmd>
+
+
+<var>
+$NF : last filed
+$NF-1 -2 ... -N
+</var>
+
+examples
+
+#!/bin/sh
+
+function run()  {
+    echo $1
+}
+export -f run
+
+DATA="u l h h l j h l k k k u l h h l k l j j h h h l u h h h h j k u l k k k k j l k k j j l u k k l
+ k k j k l u u u h h h l j j j j j k l u u k k k k k l u u k k k k k l k k l j h l k k k k k l u h l 
+j j h h h h l j j k k l j l u u h h h h l k l k l k l j j j j j l"
+
+echo $DATA | awk '{
+for(i=1;i<NF;i++)
+    print $i
+}' > DATA_COND
+
+while read -r line
+do
+    command=$line
+    echo "command = $line"
+done < DATA_COND
+

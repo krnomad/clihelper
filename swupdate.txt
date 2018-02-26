@@ -1,0 +1,111 @@
+setItem platform.time.sources SNTP
+setItem platform.softwaremanagement.lastcheckattempted 1451789027
+
+setItem oem.software.coredevicesoftware.manifest.baseurl http://192.168.0.174/cgi-bin/cds_manifest.pl
+setItem platform.softwaremanagement.platformsoftware.manifest.baseurl http://192.168.0.174/cgi-bin/psi_manifest.pl
+setItem platform.softwaremanagement.platformconfig.baseurl http://192.168.0.174/cgi-bin/plat_config.pl
+setItem platform.softwaremanagement.lastcheckattempted 1451789027
+
+[Auto]
+1단계.
+
+setItem platform.softwaremanagement.autoupdate.enabled false
+
+setItem platform.softwaremanagement.lastcheckattempted
+
+setItem platform.softwaremanagement.autoupdate.starttime
+
+setItem platform.softwaremanagement.autoupdate.startwindow.duration 60
+
+setItem platform.softwaremanagement.autoupdate.startwindow.minduration 60
+
+
+2단계. : date 로 나온 시간 기준에서 아래 중 하나로 예약 걸면 된다. (30분정도 이후 것으로 하기 바람)
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 0000 -> 0h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 1800 -> 0h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 3600 -> 1h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 5400 -> 1h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 7200 -> 2h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 9000 -> 2h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 10800 -> 3h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 12600 -> 3h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 14400 -> 4h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 16200 -> 4h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 18000 -> 5h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 19800 -> 5h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 21600 -> 6h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 23400 -> 6h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 25200 -> 7h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 27000 -> 7h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 28800 -> 8h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 30600 -> 8h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 32400 -> 9h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 34200 -> 9h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 36000 -> 10h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 37800 -> 10h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 39600 -> 11h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 41400 -> 11h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 43200 -> 12h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 45000 -> 12h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 46800 -> 13h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 48600 -> 13h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 50400 -> 14h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 52200 -> 14h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 54000 -> 15h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 55800 -> 15h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 57600 -> 16h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 59400 -> 16h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 61200 -> 17h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 63000 -> 17h : 30m
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 64800 -> 18h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 66600 -> 18h : 30m
+
+......
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 86400 -> 24h
+
+setItem platform.softwaremanagement.autoupdate.startwindow.start 88200 -> 24h : 30m
+
+ 
+
+3단계 :
+
+setItem platform.softwaremanagement.autoupdate.enabled true

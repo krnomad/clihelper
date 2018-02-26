@@ -1,0 +1,23 @@
+##################################################################################################
+
+  command : vim
+  section : N
+
+##################################################################################################
+
+line number
+:se nu/nonu 
+
+no hightlight
+:nohls
+
+:help key-mapping
+:help key-special-keys
+
+vim auto indent
+ctrl-t, ctrl-d  - indent current line forward, backwards 
+                  (insert mode)
+visual > or <   - indent block by sw (repeat with . )
+
+:set expandtab
+:retab -> convert all tab to space

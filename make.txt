@@ -1,0 +1,7 @@
+
+scons
+
+SConstruct
+
+Program('target1.e', 'source1.f')
+myEnv.Program('target2.e', 'source2.c')

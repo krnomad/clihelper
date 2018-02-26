@@ -1,0 +1,8 @@
+virtualenv -p python3 venv
+. venv/bin/active
+
+# pypi
+python setup.py install
+
+python setup.py register
+python setup.py sdist upload

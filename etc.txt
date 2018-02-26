@@ -1,0 +1,134 @@
+##################################################################################################
+
+  command : etc
+  section : N
+
+##################################################################################################
+
+show linux version
+fedora : rpm -qa *-release
+Ubuntu : cat /etc/*-release | uniq
+
+add repository of yum
+yum -ivh src
+
+show bit
+getconf LONG_BIT
+
+kernel version
+uname -r
+cat /etc/issue
+
+rpm install
+rpm -ivh <packages name>
+
+ssh key enroll
+scp $HOME/.ssh/id_rsa.pub jwkang2@10.0.11.24:id_rsa.pub; ssh -C jwkang2@10.0.11.24 cat '$HOME/id_rsa.pub >> $HOME/.ssh/authorized_keys'
+
+find
+find -maxdepth 2 -type d -ls
+du -h --exclude=canvas --exclude=src_backup --exclude=dtrt2100 --exclude=g5 --max-depth=1
+du -h --exclude=canvas --exclude=src_backup --exclude=dtrt2100 --exclude=g5 --max-depth=1
+
+SourceExpl
+ctags -R
+mkcscope.sh
+set tags=./tags
+cs add ~/kernel_study/linux-3.9.2/cscope.out
+
+get name server ip
+$ nslookup
+> server
+
+avantail (startct)
+$ startct --mode console vpn.humaxdigital.com
+
+Set Linux Terminal Console Column Width
+# stty cols 80
+
+diff & patch
+$ diff -urN file1 file2 > out.diff
+$ patch -p0 < lndir.c.diff  
+
+!! svn diff & patch !!
+svn diff > test.patch
+patch -p0 -i test.patch
+
+# mount USB in windows
+sudo mount -t cifs -o username="jwkang2",password="${password}" \/\/192.168.0.2/g /home/jwkang2/work/nfs_latop/usb
+sudo mount -t cifs -o username="conin/jwkang2",password="" \/\/10.0.11.193/Source_Insight /home/jwkang2/work/etc/SourceInsight
+
+
+#openACS run
+$ /usr/local/jboss/bin/run.sh  -b  0.0.0.0 &
+
+
+#check port num opened
+netstat -an | grep "LISTEN "
+
+#중복 제거
+uniq
+
+#rysnc
+rsync -ravz -e ssh youview@10.0.11.24:/public/build_output/*-release /home/sqe-yv1/release_output
+
+#vundle
+vs $MYVIMRC
+press Ctrl+I in Plugin list to Install
+1. search plugin (PluginSearch / github)
+2. $MYVIMRC 
+    ex)
+        Plugin 'Align'
+        Plugin 'https://github.com/juvenn/mustache.vim.git'
+3. PluginInstall
+
+delete
+delete Pugin and PluginClean "this delete all plugin except for 'Plugin "plugin-name"'
+if you have .vimrc file, It's possible to maintain the same vim environment by using vundle.
+
+#wc command 
+count of line
+$ wc -l
+
+#get ethernet speed
+$ ethtool eth0
+
+#after reboot
+ln -s /home/jwkang2/work/src/ws/ ws 
+ln -s /nfsroot/jwkang2/jenkins/ jenkins
+/dev/sdb1 on /nfsroot/jwkang2 
+mnt_pub.sh
+
+#trim string
+cut -c 2-5
+
+# svn copy example
+svn copy -m "create engineering build repository for INTEG-2600" -r 18676 http://svn.humaxdigital.com/YOUVIEW/Tags/YV-H28.0.0-Branch http://svn.humaxdigital.com/YOUVIEW/Tags/YV-Engineering-Build/YV-H28.8.0-Branch-INTEG-2600-T2200
+svn copy -m "add ambition engineering build tag" -r 18203 http://svn.humaxdigital.com/YOUVIEW/Tags/YV-H26.0.0-Branch http://svn.humaxdigital.com/YOUVIEW/Tags/YV-Engineering-Build/YV-H26.41.0-Branch-STBAmbition/
+
+# edit hex code in vim 
+:%!xxd
+:%!xxd -r
+
+find . -type f -print0 | xargs -0 sed -i 's/DccMonitor/StreamAnalyser/g'
+
+# svn log 
+svn log -r {2015-06-01}:{2015-06-30}
+svn log -l count
+
+# java version
+sudo update-alternatives --config java
+
+# libtool
+# LD_LIBRARY_PATH
+libtool --mode=compile gcc -c -o libmyutil.lo myutil.c -shared
+libtool --mode=link gcc -o libmyutil.la libmyutil.lo -rpath /home/jwkang2/usr/lib/ --shared
+libtool --mode=install install -c libmyutil.la /home/jwkang2/usr/lib
+
+# nfs to STB
+mkdir -p /mnt/hd1/nfs
+mount -t nfs -o nolock 192.168.0.174:/home/jwkang2/work/share/nfs /mnt/hd1/nfs
+
+# remote samba
+sudo mount -t cifs -o "username=jwkang2,password=password,uid=1001,gid=1001,port=8445" \/\/52.78.20.43/jwkang2 src
+

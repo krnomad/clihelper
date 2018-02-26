@@ -1,0 +1,100 @@
+##################################################################################################
+
+  command : shell
+  section : Y
+
+##################################################################################################
+<help>
+</help>
+
+<var>
+$# : the count of variable
+$((Number+1))
+$@, $* : all the variable
+</var>
+
+<for>
+=====================================
+
+find_list=("a.h" "b.h")
+
+for i in ${find_list[@]}
+do
+	echo $i
+done
+
+=====================================
+
+find_list=$(ls)
+
+for i in $find_list
+do
+	echo $i
+done
+
+=====================================
+
+for i in {1..5}
+do
+	echo "Welcome $i times"
+done
+
+=====================================
+
+for ((i=0;i<10;i++)); do
+    echo $i
+done
+
+=====================================
+</for>
+
+
+<example>
+=====================================
+$ cat run.sh
+#!/bin/sh
+ 
+argc=$#;
+argv[0]=$0;
+ 
+i=1
+until [ -z "$1" ]
+do
+        argv[$i]="$1";
+        i=`expr $i + 1`;
+        shift
+done
+ 
+for ((i=0; i <= $argc ; i++))
+do
+        echo "$i = ${argv[$i]}"
+done
+=====================================
+</example>
+
+=====================================
+<if>
+if [ $A -eq -o expression ]
+		-a : and, &&
+		-o : or, ||
+-eq (equal) == 
+-ne (not equal) !=
+-gt (greater than)
+-ge (greater than or equal)
+-lt (less than)
+-le (less than or equal)
+</if>
+=====================================
+
+=====================================
+
+remains
+if [ `expr $i % 2` == 0 ]
+
+string compare
+if [ "$name" == "kang" ]
+
+multiple if (and)
+if [ `expr $i % 2` == 0 ] && [ "$name" == "kang" ]
+=====================================
+3

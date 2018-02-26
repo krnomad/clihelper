@@ -1,0 +1,21 @@
+##################################################################################################
+
+  command : git
+  section : N
+
+##################################################################################################
+
+#1 add user
+sudo smbpasswd -a jwkang2
+
+#2 modify conf file
+sudo vim /etc/samba/smb.conf
+
+[jwkang2]
+comment = jwkang2
+path = /home/jwkang2
+browsable = yes
+read only = no
+
+#3 restart samba
+sudo /etc/init.d/smb restart

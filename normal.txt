@@ -1,0 +1,9 @@
+'^' 와 '$' 
+
+'^' 는 바로 문자뒤의 문자열로 시작 됨을 가르킨다. 
+"^The" : 는 "The"로 시작 하는 문자를 말한다. ex) The Car is red, Theater... 
+
+'$' 는 문자열의 맨 마지막을 가르킨다. 
+"of despair$" : 는 "of despair"로 끝나는 문자열이다. ex) The concept of despair 
+
+http://www.phpschool.com/gnuboard4/bbs/board.php?bo_table=tipntech&wr_id=1406
