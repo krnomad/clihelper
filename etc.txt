@@ -132,3 +132,6 @@ mount -t nfs -o nolock 192.168.0.174:/home/jwkang2/work/share/nfs /mnt/hd1/nfs
 # remote samba
 sudo mount -t cifs -o "username=jwkang2,password=password,uid=1001,gid=1001,port=8445" \/\/52.78.20.43/jwkang2 src
 
+# run tr069 acs server
+sudo /usr/local/jboss/bin/run.sh -b 0.0.0.0 &
+
