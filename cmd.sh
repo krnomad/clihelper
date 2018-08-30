@@ -22,7 +22,7 @@ func_print_section()	{
 echo ""
 
 # git basic info print
-echo "repo : git clone git@bitbucket.org:godofembedded/command.git"
+echo "repo : git clone https://github.com/jwkang/clihelper.git"
 
 # check command 
 if [ $# -eq 0 ];
