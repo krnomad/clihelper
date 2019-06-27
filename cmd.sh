@@ -22,7 +22,7 @@ func_print_section()	{
 echo ""
 
 # git basic info print
-echo "repo : git clone https://github.com/jwkang/clihelper.git"
+#echo "repo : git clone https://github.com/jwkang/clihelper.git"
 
 # check command 
 if [ $# -eq 0 ];
@@ -42,14 +42,14 @@ fi
 
 # check if section is exist
 ret=`cat $FILENAME | grep "section :" | awk -F: {'print $NF'}`
-if [ $ret == "Y" ];
+if [ [$ret == "Y"] ];
 then
 	if [ $# -eq 2 ];
 	then 
 		func_print_section $FILENAME $2	
 	fi
 else
-	if [ $2 == "add" ];
+	if [ [$2 == "add"] ];
 	then
 # modify the detail contents from command
 		vim ${FILENAME}
