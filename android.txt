@@ -1,0 +1,55 @@
+# Logcat 
+adb logcat -G 30M
+adb logcat -c
+
+# Gradle 
+## Show dependencies
+./gradlew :app:dependencies
+
+
+## Show gradle tasks
+./gradlew tasks
+./gradlew tasks --all
+
+
+# PackageManager
+pm clear com.android.providers.tv 
+
+pm install ${packagename}
+pm uninstall ${packagename}
+
+pm list packages
+
+
+# Debugging skill  (including dumpsys)
+## ANR debugging
+see the file => /data/anr/traces.txt
+
+## see the top of the Activity
+dumpsys SurfaceFlinger
+
+## See package infomation
+dumpsys package com.google.android.tv
+
+## show all services 
+dumpsys activity services
+
+## show all broadcast since booting on
+dumpsys activity broadcasts
+
+## See all the permission the framework defines
+frameworks/base/core/res/AndroidManifest.xml
+
+# Activity Manager
+am start -n com.google.android.tv/com.android.tv.MainActivity
+am start -a android.settings.SETTINGS
+am start -a android.intent.action.MAIN -n com.test.tr069/com.test.tr069.MainActivity
+am start -a android.intent.action.DELETE -d packagename
+
+
+# Content Provider
+## Content provider command example
+content insert content://com.android.provider.tv/channels --bind schedule_flag:i:0 --bind chanell_id:i:32
+content query --uri content://android.media.tv/program --where 'schedule_flag=0 and channel_id=32
+
+
