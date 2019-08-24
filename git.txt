@@ -55,3 +55,6 @@ git remove -v
 
 # remove untracked content in unstaged
 git rm --cache Alloy/Alloy.System.Test
+
+# show changes by method name
+git log -S onKeyDown -- ./

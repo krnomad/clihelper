@@ -11,6 +11,10 @@ adb logcat -c
 ./gradlew tasks
 ./gradlew tasks --all
 
+# repo
+## down with specific date
+repo forall -c 'git checkout `git rev-list --all -n1 --before="2019-07-22 02:00"`'
+
 
 # PackageManager
 pm clear com.android.providers.tv 
@@ -51,5 +55,10 @@ am start -a android.intent.action.DELETE -d packagename
 ## Content provider command example
 content insert content://com.android.provider.tv/channels --bind schedule_flag:i:0 --bind chanell_id:i:32
 content query --uri content://android.media.tv/program --where 'schedule_flag=0 and channel_id=32
+
+
+# meminfo
+dumpsys meminfo com.humaxdigital.corona.tvinput.jcom 
+adb shell dumpsys meminfo <package_name|pid> [-d]
 
 
