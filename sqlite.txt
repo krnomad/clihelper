@@ -74,3 +74,10 @@ ALTER TABLE db_list ADD price INTEGER;
 20. get column name
 PRAGMA table_info(table_name);
 
+21. print date time
+
+datetime(endTime/1000+32400, 'unixepoch')
+
+cd /data/data/com.humaxdigital.atv.htvlauncher/databases\r\rsqlite3 -header -column reservation_test_database "SELECT id,bookingId,bookingType,eventLocator,datetime(onStartTime/1000+32400, 'unixepoch') onStartTime,datetime(onStopTime/1000+32400, 'unixepoch') onStopTime,duration,lastStatus,stopReason,datetime(lastAccessTime/1000+32400, 'unixepoch') lastAccessTime from reservation_history" \r\r
+
+
