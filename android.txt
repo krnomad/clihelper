@@ -72,3 +72,9 @@ git reset --soft HEAD~1
 # stage to modified
 git reset
 
+
+# cherry pick
+git remote add local /home/jwkang2/work/android/xxx
+git fetch local HEAD:branch_name
+git cherry-pick 2db6571fc3f389bc15e2fc83d32e4879f13995ec
+
