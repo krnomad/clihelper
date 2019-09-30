@@ -62,3 +62,13 @@ dumpsys meminfo com.humaxdigital.corona.tvinput.jcom
 adb shell dumpsys meminfo <package_name|pid> [-d]
 
 
+# cherry-pick
+git fetch remote_name HEAD:local2
+git checkout revision_num
+
+# commit to stage
+git reset --soft HEAD~1
+
+# stage to modified
+git reset
+

@@ -1,0 +1,5 @@
+## TID 얻기
+cat LogFilter_20190830_213535.txt | grep 'HRecordingSessionWorker : => MSG_TUNE : ' | awk {'print $4'}
+
+## Log 얻기
+cat LogFilter_20190830_213535.txt | grep -A1000 'corona  : RecordNexusFileStorage : Path /storage/C503-10FC/Android/' > a.out
