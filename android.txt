@@ -55,6 +55,8 @@ am start -a android.intent.action.DELETE -d packagename
 ## Content provider command example
 content insert content://com.android.provider.tv/channels --bind schedule_flag:i:0 --bind chanell_id:i:32
 content query --uri content://android.media.tv/program --where 'schedule_flag=0 and channel_id=32
+content delete --uri content://android.media.tv/recorded_program
+content update --uri content://com.humaxdigital.corona.tvprovider.schedule/schedulesTable/71 --bind status:i:3
 
 
 # meminfo
@@ -77,4 +79,76 @@ git reset
 git remote add local /home/jwkang2/work/android/xxx
 git fetch local HEAD:branch_name
 git cherry-pick 2db6571fc3f389bc15e2fc83d32e4879f13995ec
+
+# fastboot
+fastboot -s tcp:192.168.0.132 erase misc
+fastboot -s tcp:192.168.0.132 erase eio
+fastboot -s tcp:192.168.0.132 flash bootloader ./bootloader.prod.img
+fastboot -s tcp:192.168.0.132 flash boot ./boot.img
+fastboot -s tcp:192.168.0.132 flash system ./system.img
+fastboot -s tcp:192.168.0.132 flash vendor ./vendor.img
+fastboot -s tcp:192.168.0.132 flash cache ./cache.img
+fastboot -s tcp:192.168.0.132 flash userdata ./userdata.img
+fastboot -s tcp:192.168.0.132 reboot
+
+
+
+# memdump
+am dumpheap <pid> <output-file-name>;
+hprof-conv tvinput.heap.dump t.converted
+
+pid=$(adb shell pidof com.humaxdigital.atv.htvlauncher)
+adb shell am dumpheap ${pid} /cache/dump
+adb pull /cache/dump
+hprof-conv dump dump.hprof
+
+n Android pre 3.0 you can use so called
+
+kill -10 <pid> (more)
+
+In Android 3.0 a new command-line tool has been added:
+
+adb shell am dumpheap <pid> <output-file-name>; (more)
+
+Detailed description
+
+To get HPROF you need also change the format of it using hprof-conv
+
+
+# see crash
+adb shell dumpsys dropbox --print
+
+
+# UI performance 
+adb shell dumpsys gfxinfo <PACKAGE_NAME>
+adb shell dumpsys gfxinfo com.humaxdigital.atv.htvlauncher
+
+# start service using adb
+am start-foreground-service -n com.humaxdigital.corona.tac.jcom/com.humaxdigital.corona.tac.jcom.HTACService
+am startservice -n com.humaxdigital.corona.tac.jcom/com.humaxdigital.corona.tac.jcom.HTACService
+
+# system strace
+tvinput-sdk/platform-tools/systrace$ python systrace.py
+
+
+
+# Thread dump
+원하는 process 대상으로 thread dump를 확인할 수 있는 방법이 있어서 공유 드립니다.
+
+(1)	adb shell run-as [package] kill -3 [pid] 
+(2)	adb 를 통해 /data/anr 경로로 이동해서 trace_xx 파일 확인
+
+위 명령어는 process 를 죽이는 동작은 아니며 현재 동작중인 process 의 thread dump 를 수행합니다.
+
+
+예를 들어 corona 의 경우 다음과 같은 디버깅이 가능합니다.
+
+11-18 09:25:16.772 31575 31618 E corona  : HDeadLockDebugger : ---------------- [Detected List Start] ------------------
+11-18 09:25:16.772 31575 31618 E corona  : Pending[11.277 Sec] HPlayingSessionWorker::doHandleMessage102 instance [14601684] tid[31819]
+11-18 09:25:16.772 31575 31618 E corona  : HDeadLockDebugger : ---------------- [Detected List End  ]   ------------------
+
+위와 같이 Corona 내 deadlock 이 확인된 경우
+
+>> adb shell run-as com.humaxdigital.corona.tvinput.jcom kill -3 31575
+
 

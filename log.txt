@@ -1,0 +1,12 @@
+# SCHEUDLE DB
+select scheduleId, bookingId, bookingType, channelId, evnetId, eventLocator,
+strftime('%Y-%m-%d %H:%M:%S.', "startTime"/1000, 'unixepoch', 'localtime') as startTime, 
+case when(onStartTime) then strftime('%Y-%m-%d %H:%M:%S.', "onStartTime"/1000, 'unixepoch', 'localtime') end as onStartTime,
+strftime('%Y-%m-%d %H:%M:%S.', "endTime"/1000, 'unixepoch', 'localtime') as endTime, 
+case when(onStopTime) then strftime('%Y-%m-%d %H:%M:%S.', "onStopTime"/1000, 'unixepoch', 'localtime') end as onEndTime
+from reservation_history ORDER by startTime;
+
+# DMS
+recPumpPtr Err|remoteSession|CMD_DMS|EXT_SERVICE|HRemoteSessionWorker : MSG_TUNE|++++++ registerResource ++++++|PMT|HAribRecordExecutorModule
+
+

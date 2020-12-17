@@ -135,3 +135,61 @@ sudo mount -t cifs -o "username=jwkang2,password=password,uid=1001,gid=1001,port
 # run tr069 acs server
 sudo /usr/local/jboss/bin/run.sh -b 0.0.0.0 &
 
+# mount nfs
+sudo mount.nfs 192.168.31.103:/nfsroot /mnt/data
+sudo exportfs -o rw,insecure *:/nfsroot/streams
+
+# dd
+dd if=<input-file> of=<output-file> bs=<byte-size> count=1
+
+## skip some byte
+dd if=blah of=blahblah bs=512 skip=1
+dd if=0522_DLNA_aging_log.log of=0522_aging.lg skip=100000000 bs=50MB iflag=skip_bytes count=1
+
+## example
+dd if=LogFilter_20200215_190456.txt of=1.txt bs=100MB count=1
+dd if=LogFilter_20200215_190456.txt of=1.txt bs=100MB skip=1 count=1
+dd if=LogFilter_20200215_190456.txt of=1.txt bs=100MB count=1
+dd if=LogFilter_20200215_190456.txt of=2.txt bs=100MB skip=1 count=1
+dd if=LogFilter_20200215_190456.txt of=3.txt bs=100MB skip=2 count=1
+dd if=LogFilter_20200215_190456.txt of=4.txt bs=100MB skip=3 count=1
+dd if=LogFilter_20200215_190456.txt of=5.txt bs=100MB skip=4 count=1
+dd if=LogFilter_20200215_190456.txt of=6.txt bs=100MB skip=5 count=1
+
+
+gdrive
+gdrive list --name-width 0 --absolute | grep daily
+
+
+jwkang2@InHouse4:~/bin/python_util/dlna$ python record_controller.py DR all
+
+
+server file fd does not delete => make hdd full
+XA402:/proc/4724/fd # find | xargs | ls -al | grep recording | grep deleted
+
+
+# java version change
+update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/openjdk_11/bin/javac 1
+update-alternatives --install /usr/bin/java java /usr/lib/jvm/openjdk_11/bin/java 1
+update-alternatives --config java
+update-alternatives --config javac
+which java
+
+# tcpdump
+tcpdump -i gphy -s 0 -w /cache/cap.pcap
+tcpdump -i gphy -s 0 'tcp port http' -w /cache/cap.pcap
+
+
+
+
+# top
+ps -efo --sort -rss | head -n 10 
+
+ps -eo user,pid,ppid,rss,vsize,pcpu,time,cmd --sort -rss | head -n 11 
+
+# encoding
+iconv -f utf-16 -t utf-8 log-e8b2fe83f3a8-20201012-1119-to-20201013-1021.txt > log.log
+
+
+# terminate screen
+ screen -X -S 25743 quit

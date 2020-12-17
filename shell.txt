@@ -98,3 +98,27 @@ multiple if (and)
 if [ `expr $i % 2` == 0 ] && [ "$name" == "kang" ]
 =====================================
 3
+
+============
+for ((i=1;i<6;i++)); do
+echo "============== $i ================="
+echo "adb push /home/jwkang2/work/android/stream/recordings/$i/output.wav /cache/audio.pcm"
+adb push /home/jwkang2/work/android/stream/recordings/$i/output.wav /cache/audio.pcm
+adb shell /cache/tac_bin
+done
+============
+
+
+
+count=0
+while [ $count != 50 ];
+do
+count=$((count+1))
+input keyevent KEYCODE_MEDIA_RECORD
+sleep 20
+input keyevent KEYCODE_DPAD_DOWN
+sleep 5
+done
+
+print with delimeter
+cat b.out | while read -r a; do echo -n "$a|"; done

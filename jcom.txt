@@ -1,0 +1,73 @@
+setting -> inform -> hdmi -> OK 꾹 -> 5539
+
+#TimeSlip..
+LauncherActivity.java
+changeFragment, handleMessageTivoStarted
+        if (isTSREnabled()) {
+            doActionTimeSlipUIClose();
+            doActionTimeSlipStop();
+        }
+
+
+
+repo init -u ssh://jwkang2@exg.humaxdigital.com:29418/taurus/brcm/AVKO-BSE/platform/manifest -b xa402
+
+
+echo "repo sync -j4"
+repo sync -j4
+repo sync -j4
+repo sync -j4
+
+
+# start build
+
+##### MAIN #####
+
+# clear 
+#rm -rf out
+#rm -rf out-bcm
+rm -rf ../xa402h/*
+rm -rf ./*
+
+# download
+repo init -u ssh://jwkang2@exg.humaxdigital.com:29418/taurus/brcm/AVKO-BSE/platform/manifest -b xa402h
+
+echo "repo sync -j4"
+repo sync -j4
+repo sync -j4
+repo sync -j4
+
+# make non-permissive image
+# make_non_permissive
+
+# start build
+source build.sh XA402 userdebug
+build_all
+
+
+
+
+# build script is not working
+set fileformat=unix
+https://stackoverflow.com/questions/29045140/env-bash-r-no-such-file-or-directory
+        modified:   ../../XA402/setup.sh
+        modified:   XA402_build.sh
+        modified:   humax_build.sh
+
+
+# doris
+/data/data/com.humaxdigital.atv.dlnaservice/app_dms_conf/dms/root/dms/doc/desc/dms.xml
+
+
+# SR4300 search
+power off -> on -> back -> 5539
+1->1 
+QAM -> manual -> 
+keep hz 1
+
+
+# alps dump
+setprop alps.streamer.dump true   
+
+# pin
+39608739

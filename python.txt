@@ -6,3 +6,17 @@ python setup.py install
 
 python setup.py register
 python setup.py sdist upload
+
+# alternative
+sudo rm /usr/bin/python
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 3
+
+sudo update-alternatives --config python
+
+
+
+# venv
+jwkang2@InHouse4:~/work/aging/xa402_aging$ python3 -m venv .venv 
+jwkang2@InHouse4:~/work/aging/xa402_aging$ . .venv/bin/activate
