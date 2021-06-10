@@ -80,9 +80,15 @@ datetime(endTime/1000+32400, 'unixepoch')
 
 cd /data/data/com.humaxdigital.atv.htvlauncher/databases\r\rsqlite3 -header -column reservation_test_database "SELECT id,bookingId,bookingType,eventLocator,datetime(onStartTime/1000+32400, 'unixepoch') onStartTime,datetime(onStopTime/1000+32400, 'unixepoch') onStopTime,duration,lastStatus,stopReason,datetime(lastAccessTime/1000+32400, 'unixepoch') lastAccessTime from reservation_history" \r\r
 
-
-SELECT id,bookingId,bookingType,eventLocator,datetime(startTime/1000+32400, 'unixepoch') startTime, datetime(onStartTime/1000+32400, 'unixepoch') onStartTime,datetime((onStartTime+duration)/1000+32400, 'unixepoch') stopTime,datetime(onStopTime/1000+32400, 'unixepoch') onStopTime,duration,lastStatus,stopReason,datetime(lastAccessTime/1000+32400, 'unixepoch') lastAccessTime, (onStartTime+duration-onStopTime)/1000 stopDiff from reservation_history
+SELECT id,bookingId,bookingType,eventLocator,datetime(startTime/1000+32400, 'unixepoch') startTime, datetime(onStartTime/1000+32400, 'unixepoch') onStartTime,datetime((onStartTime+duration)/1000+32400, 'unixepoch') stopTime,datetime(onStopTime/1000+32400, 'unixepoch') onStopTime,duration,lastStatus,stopReason, (onStartTime+duration-onStopTime)/1000 stopDiff, * from reservation_history
 
 # channel_id
 select datetime(start_time_utc_millis/1000+32400, 'unixepoch'),
 datetime(end_time_utc_millis/1000+32400, 'unixepoch') from programs where channel_id = 224 ORDER by start_time_utc_millis;
+
+
+# recorded_programs
+SELECT _id,channel_id,title,datetime(start_time_utc_millis/1000+32400, 'unixepoch') start_time_utc_millis, datetime(end_time_utc_millis/1000+32400, 'unixepoch') end_time_utc_millis,recording_duration_millis/1000 recording_duration_millis, recording_data_bytes/1024, recording_data_uri, json_extract(internal_provider_data,'$.bookingUniqueIdentifier') bookingUniqueIdentifier from recorded_programs
+
+# simple recorded programs
+select _id, title, datetime((start_time_utc_millis)/1000+32400, 'unixepoch') start_time_utc_millis, datetime((end_time_utc_millis)/1000+32400, 'unixepoch') end_time_utc_millis, recording_duration_millis/1000 recording_duration_millis from recorded_programs where _id = 59 or _id = 58;

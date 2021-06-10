@@ -152,3 +152,5 @@ tvinput-sdk/platform-tools/systrace$ python systrace.py
 >> adb shell run-as com.humaxdigital.corona.tvinput.jcom kill -3 31575
 
 
+# system call 확인
+strace 

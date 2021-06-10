@@ -9,6 +9,20 @@ changeFragment, handleMessageTivoStarted
         }
 
 
+# record extract
+1. adb connect [STB_IP]
+2. adb root
+3. adb pull /data/data/com.humaxdigital.atv.htvservice/databases
+4. adb pull /data/data/com.android.providers.tv
+5. adb shell
+6. su
+7. cd /mnt/media_rw/1387bdaa-dc2f-42ff-afdc-46591fbe98f0/Android/data/com.humaxdigital.corona.tvinput.jcom/files/recordings/
+8. mkdir –p /sdcard/temp
+9. tar -cvf /sdcard/temp/test.tar 1610515796012_*
+10. exit
+11. exit (한번 더)
+12. adb pull /sdcard/temp/test.tar
+
 
 repo init -u ssh://jwkang2@exg.humaxdigital.com:29418/taurus/brcm/AVKO-BSE/platform/manifest -b xa402
 
@@ -64,10 +78,17 @@ power off -> on -> back -> 5539
 1->1 
 QAM -> manual -> 
 keep hz 1
+- 447hz 101 live
 
+# xa402h search
+setting -> Information display -> HDMI -> OK 3 seconds
 
 # alps dump
 setprop alps.streamer.dump true   
 
 # pin
 39608739
+
+
+# tac log filter
+handleMessage Uri : content|starting thread,|thread ended,|HANDLE_MESSAGE_START_PUMP. uri => content://android.media.tv/recorded_program/|HProxyThread : readTsData: finish read data. last mReadLength|DecoderAudio::decode: !!!|HFileDecReader : id :|HRecordingStatusReceiver : onReceive|now max|statue|thread ended|onCompleted|stopPlayerLoop
